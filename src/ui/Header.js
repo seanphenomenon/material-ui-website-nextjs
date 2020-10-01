@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import  Link  from "../Link";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -19,7 +19,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 
-import logo from "../../assets/logo.svg";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -256,7 +255,7 @@ const tabs = (
   <Tab
     className={classes.tab}
     component={Link}
-    to="/"
+    href="/"
     value={0}
     label="Home"
   />
@@ -266,28 +265,28 @@ const tabs = (
     onMouseOver={(event) => handleClick(event)}
     className={classes.tab}
     component={Link}
-    to="/services"
+    href="/services"
     value={1}
     label="Services"
   />
   <Tab
     className={classes.tab}
     component={Link}
-    to="/revolution"
+    href="/revolution"
     value={2}
     label="The Revolution"
   />
   <Tab
     className={classes.tab}
     component={Link}
-    to="/about"
+    href="/about"
     value={3}
     label="About Us"
   />
   <Tab
     className={classes.tab}
     component={Link}
-    to="/contact"
+    href="/contact"
     value={4}
     label="Contact Us"
   />
@@ -298,7 +297,7 @@ const tabs = (
   color="secondary"
   className={classes.button}
   component={Link}
-  to="/estimate"
+  href="/estimate"
   value={5}
   onClick={() => props.setValue(5)} //passing in non-existant value of 5 will clear off any existing active tab./ 
 >
@@ -356,27 +355,27 @@ const drawer = (
     >
     <div className={classes.toolbarMargin}/> {/* this is used to help push the drawer menu under the appbar */}
       <List disablePadding>
-        <ListItem   divider button component={Link} to='/' onClick={()=> {setOpenDrawer(false); props.setValue(0)}} selected={props.value === 0}>
+        <ListItem   divider button component={Link} href='/' onClick={()=> {setOpenDrawer(false); props.setValue(0)}} selected={props.value === 0}>
           <ListItemText className={props.value === 0 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Home</ListItemText>
         </ListItem>
 
-         <ListItem divider button component={Link} to='/services' onClick={()=> {setOpenDrawer(false); props.setValue(1)}} selected={props.value === 1}>
+         <ListItem divider button component={Link} href='/services' onClick={()=> {setOpenDrawer(false); props.setValue(1)}} selected={props.value === 1}>
           <ListItemText className={props.value === 1 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Services</ListItemText>
          </ListItem>
 
-          <ListItem  divider button component={Link} to='/revolution' onClick={()=> {setOpenDrawer(false); props.setValue(2)}} selected={props.value === 2}>
+          <ListItem  divider button component={Link} href='/revolution' onClick={()=> {setOpenDrawer(false); props.setValue(2)}} selected={props.value === 2}>
             <ListItemText className={props.value === 2 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>The Revolution</ListItemText>
           </ListItem>
 
-          <ListItem  divider button component={Link} to='/about' onClick={()=> {setOpenDrawer(false); props.setValue(3)}} selected={props.value === 3}>
+          <ListItem  divider button component={Link} href='/about' onClick={()=> {setOpenDrawer(false); props.setValue(3)}} selected={props.value === 3}>
             <ListItemText className={props.value === 3 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>About Us</ListItemText>
           </ListItem>
 
-          <ListItem   divider button component={Link} to='/contact' onClick={()=> {setOpenDrawer(false); props.setValue(4)}} selected={props.value === 4}>
+          <ListItem   divider button component={Link} href='/contact' onClick={()=> {setOpenDrawer(false); props.setValue(4)}} selected={props.value === 4}>
             <ListItemText className={props.value === 4 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Contact Us</ListItemText>
           </ListItem>
 
-          <ListItem className={classes.drawerItemEstimate} divider button component={Link} to='/estimate' onClick={()=> {setOpenDrawer(false); props.setValue(5)}} selected={props.value === 5}>
+          <ListItem className={classes.drawerItemEstimate} divider button component={Link} href='/estimate' onClick={()=> {setOpenDrawer(false); props.setValue(5)}} selected={props.value === 5}>
             <ListItemText className={props.value === 5 ? [classes.drawerItem, classes.drawerItemSelected] : classes.drawerItem} disableTypography>Free Estimate</ListItemText>
           </ListItem>
       </List>
@@ -400,12 +399,12 @@ const drawer = (
             <Button
               className={classes.logoContainer}
               component={Link}
-              to="/"
+              href="/"
               onClick={() => props.setValue(0)}
               disableRipple
             >
               {/* we also must wrap/make the logo a button to return to the home page, offset the Button component default padding, and make sure it routes back to home page by adding onclick and updating value state. */}
-              <img src={logo} alt="company logo" className={classes.logo} />
+              <img src='/assets/logo.svg' alt="company logo" className={classes.logo} />
             </Button>
 
             {matches ? drawer: tabs} 

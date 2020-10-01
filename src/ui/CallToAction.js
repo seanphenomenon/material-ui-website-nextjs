@@ -5,9 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ButtonArrow";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import callActionBackground from "../../assets/background.jpg";
-import mobileBackground from "../../assets/mobileBackground.jpg";
-import {Link} from 'react-router-dom';
+import Link from '../Link';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   callActionBackground: {
-    backgroundImage: `url(${callActionBackground})`,
+    backgroundImage: `url("/assets/background.jpg")`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -30,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: "60em",
     width: "100%",
     [theme.breakpoints.down("md")]: {
-      backgroundImage: `url(${mobileBackground})`,
+      backgroundImage: `url("/assets/mobileBackground.jpg")`,
       backgroundAttachment: 'inherit' //removes parallax effect on mobile
     },
   },
@@ -81,7 +79,7 @@ export default function CallToAction(props) {
             </Typography>
             <Grid item container justify={matchesSM ? 'center' : undefined} >
               <Button variant="outlined" className={classes.learnButton} component={Link}
-                to='/revolution' onClick={() => props.setValue(2) }>
+                href='/revolution' onClick={() => props.setValue(2) }>
                 <span style={{ marginRight: "5px" }}>Learn More</span>
                 <ButtonArrow
                   width={15}
@@ -97,7 +95,7 @@ export default function CallToAction(props) {
       <Button 
       variant="contained" 
       className={classes.estimateButton} component={Link}
-      to='/estimate'
+      href='/estimate'
       onClick={() => props.setValue(5)}
       >
         Free Estimate

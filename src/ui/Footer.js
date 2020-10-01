@@ -1,12 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import footerAdornment from "../../../src/assets/Footer Adornment.svg";
 import Grid from "@material-ui/core/Grid";
-import { Link } from "react-router-dom";
+import  Link  from "../Link";
 import Hidden from "@material-ui/core/Hidden";
-import facebook from "../../assets/facebook.svg";
-import twitter from "../../assets/twitter.svg";
-import instagram from "../../assets/instagram.svg";
+
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -77,7 +74,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/"
+                href="/"
                 onClick={() => props.setValue(0)}
               >
                 <div>Home</div>
@@ -90,7 +87,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/services"
+                href="/services"
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(0);
@@ -102,7 +99,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/customsoftware"
+                href="/customsoftware"
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(1);
@@ -114,7 +111,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/mobileapps"
+                href="/mobileapps"
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(2);
@@ -126,7 +123,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/websites"
+                href="/websites"
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(3);
@@ -142,7 +139,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 onClick={() => props.setValue(2)}
               >
                 The Revolution
@@ -151,7 +148,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 onClick={() => props.setValue(2)}
               >
                 Vision
@@ -160,7 +157,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 onClick={() => props.setValue(2)}
               >
                 Technology
@@ -169,7 +166,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                href="/revolution"
                 onClick={() => props.setValue(2)}
               >
                 Process
@@ -182,7 +179,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                href="/about"
                 onClick={() => props.setValue(3)}
               >
                 About Us
@@ -191,7 +188,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                href="/about"
                 onClick={() => props.setValue(3)}
               >
                 Mission Statement
@@ -200,7 +197,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                href="/about"
                 onClick={() => props.setValue(3)}
               >
                 History
@@ -209,7 +206,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                href="/about"
                 onClick={() => props.setValue(3)}
               >
                 Team
@@ -222,7 +219,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/contact"
+                href="/contact"
                 onClick={() => props.setValue(4)}
               >
                 Contact Us
@@ -233,7 +230,7 @@ export default function Footer(props) {
       </Hidden>
 
       <img
-        src={footerAdornment}
+        src='/assets/footerAdornment.svg'
         alt="black decorative slash"
         className={classes.adornment}
       />
@@ -251,7 +248,7 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src={facebook} alt="facebook logo" className={classes.icon}/>
+          <img src='/assets/facebook.svg' alt="facebook logo" className={classes.icon}/>
         </Grid>
         <Grid
           item
@@ -260,7 +257,7 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src={twitter} alt="twitter logo" className={classes.icon} />
+          <img src='/assets/twitter.svg' alt="twitter logo" className={classes.icon} />
         </Grid>
         <Grid
           item
@@ -269,7 +266,7 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src={instagram} alt="instagram logo" className={classes.icon} />
+          <img src='/assets/instagram.svg' alt="instagram logo" className={classes.icon} />
         </Grid>
       </Grid>
     </footer>

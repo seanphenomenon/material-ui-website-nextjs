@@ -17,7 +17,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import Hidden from '@material-ui/core/Hidden'
 
 
 function ElevationScroll(props) {
@@ -326,7 +326,7 @@ const tabs = (
     <MenuItem
       key={option}
       component={Link}
-      to={option.link}
+      href={option.link}
       classes={{ root: classes.menuItem }}
       onClick={(event) => {
         handleMenuItemClick(event, index);
@@ -406,8 +406,14 @@ const drawer = (
               {/* we also must wrap/make the logo a button to return to the home page, offset the Button component default padding, and make sure it routes back to home page by adding onclick and updating value state. */}
               <img src='/assets/logo.svg' alt="company logo" className={classes.logo} />
             </Button>
-
-            {matches ? drawer: tabs} 
+            {/* Hidden components added here only for next.js to prevent refresh page flash on mobile header tabs */}
+            <Hidden mdDown>
+              {tabs}
+              </Hidden>
+              <Hidden lgUp>
+                {drawer}
+            {/* {matches ? drawer: tabs}  */}
+            </Hidden>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

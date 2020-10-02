@@ -10,12 +10,12 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={Theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <meta charset="utf-8" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap" />
+          <link rel="icon" href="/favicon.png" />
+
         </Head>
-        <body>
+        <body style={{margin: 0}}>
           <Main />
           <NextScript />
         </body>

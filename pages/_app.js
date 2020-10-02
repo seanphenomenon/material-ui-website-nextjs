@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Theme from '../src/ui/Theme';
+import Header from '../src/ui/Header';
+import Footer from '../src/ui/Footer';
+
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+
+  const [value, setValue] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -19,13 +24,21 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Arc Development</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={Theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
+        <Header   value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex} />
+        {/* The 'component' component below, is actually which ever page we are on. right now it is the index.js. */ }
+        <Component {...pageProps}   value={value} setValue={setValue}
+                setSelectedIndex={setSelectedIndex} /> 
+        <Footer value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex} />
       </ThemeProvider>
     </React.Fragment>
   );

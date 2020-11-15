@@ -1,12 +1,12 @@
 import React from "react";
+import Head from "next/head";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import  Link  from "../src/Link";
+import Link from "../src/Link";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 
 import CallToAction from "../src/ui/CallToAction";
 
@@ -40,6 +40,24 @@ export default function Websites(props) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Stunning Custom Website Design | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Completely custom designed and built from scratch to be blazing fast. Optimized code, server-side rendering, and perfect responsive design. | 99% PageSpeed Score"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | Websites"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/websites" />
+
+        <link rel="canonical" key="canonical" href="arc.com/websites" />
+      </Head>
       <Grid
         item
         container
@@ -60,14 +78,17 @@ export default function Websites(props) {
               href="/mobileapps"
               onClick={() => props.setSelectedIndex(2)} //set to 2 for ios/android dev as active tab in services menu
             >
-              <img src='assets/backArrow.svg' alt="back arrow to services page" />
+              <img
+                src="assets/backArrow.svg"
+                alt="back arrow to services page"
+              />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography
-              variant="h2"
+              variant="h1"
               gutterBottom
               align={matchesMD ? "center" : undefined}
             >
@@ -108,7 +129,7 @@ export default function Websites(props) {
               onClick={() => props.setValue(0)} // value set to 0 for the revolution as active tab in menu
             >
               <img
-                src='/assets/forwardArrow.svg'
+                src="/assets/forwardArrow.svg"
                 alt="forward arrow to web development page"
               />
             </IconButton>
@@ -136,7 +157,7 @@ export default function Websites(props) {
             </Grid>
             <Grid item>
               <img
-                src='/assets/analytics.svg'
+                src="/assets/analytics.svg"
                 alt="analytics graph with magnifying glass"
                 style={{
                   marginLeft: "-2.8em",
@@ -175,7 +196,10 @@ export default function Websites(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src='/assets/ecommerce.svg' alt="e-commerce dollar sign globe" />
+              <img
+                src="/assets/ecommerce.svg"
+                alt="e-commerce dollar sign globe"
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -220,7 +244,7 @@ export default function Websites(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src='/assets/outreach.svg' alt="orange megaphone" />
+              <img src="/assets/outreach.svg" alt="orange megaphone" />
             </Grid>
           </Grid>
         </Grid>
@@ -262,7 +286,10 @@ export default function Websites(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <img src='/assets/seo.svg' alt="website standing on winner's podium" />
+              <img
+                src="/assets/seo.svg"
+                alt="website standing on winner's podium"
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -296,7 +323,7 @@ export default function Websites(props) {
         </Grid>
       </Grid>
       <Grid item>
-        <CallToAction setValue={props.setValue}/>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );

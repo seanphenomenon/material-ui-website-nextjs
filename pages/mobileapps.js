@@ -1,20 +1,16 @@
 import React from "react";
+import Head from "next/head";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Link  from "../src/Link";
+import Link from "../src/Link";
 import Hidden from "@material-ui/core/Hidden";
 import Lottie from "react-lottie";
 import IconButton from "@material-ui/core/IconButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import CallToAction from '../src/ui/CallToAction.js';
-
-
+import CallToAction from "../src/ui/CallToAction.js";
 
 import integrationAnimation from "../src/animations/integrationAnimation/data.json";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -48,7 +44,6 @@ export default function MobileApps(props) {
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
-
   const integrationOptions = {
     loop: true,
     autoplay: true,
@@ -60,6 +55,24 @@ export default function MobileApps(props) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          iOS/Android App Design and Development | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Mobile Apps Made Easy | Our cutting-edge mobile app development process lets us build beautifully designed, carefully crafted apps for both iOS and Android."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | iOS/Android App Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/mobileapps" />
+
+        <link rel="canonical" key="canonical" href="arc.com/mobileapps" />
+      </Head>
       <Grid
         item
         container
@@ -80,14 +93,17 @@ export default function MobileApps(props) {
               href="/customsoftware"
               onClick={() => props.setSelectedIndex(0)} //set to 0 for services as active tab in menu
             >
-              <img src='/assets/backArrow.svg' alt="back arrow to services page" />
+              <img
+                src="/assets/backArrow.svg"
+                alt="back arrow to services page"
+              />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography
-              variant="h2"
+              variant="h1"
               gutterBottom
               align={matchesMD ? "center" : undefined}
             >
@@ -135,7 +151,7 @@ export default function MobileApps(props) {
               onClick={() => props.setSelectedIndex(3)} //set to 3 for web development as active tab in menu
             >
               <img
-                src='/assets/forwardArrow.svg'
+                src="/assets/forwardArrow.svg"
                 alt="forward arrow to web development page"
               />
             </IconButton>
@@ -186,7 +202,10 @@ export default function MobileApps(props) {
           <Lottie
             options={integrationOptions}
             isStopped={true}
-            style={{ maxWidth: "20em" }}
+            style={{
+              maxWidth: matchesMD ? "15em" : "20em",
+              height: matchesMD ? "20em" : undefined,
+            }}
           />
         </Grid>
 
@@ -228,7 +247,10 @@ export default function MobileApps(props) {
         item
         container
         direction={matchesMD ? "column" : "row"}
-        style={{ marginBottom: "20em" }}
+        style={{
+          marginBottom: "15em",
+          display: matchesMD ? "grid" : undefined,
+        }}
         className={classes.rowContainer}
       >
         <Grid item container direction="column" md alignItems="center">
@@ -240,7 +262,7 @@ export default function MobileApps(props) {
             </Typography>
           </Grid>
           <Grid item>
-            <img src='/assets/swissKnife.svg' alt="swiss army knife" />
+            <img src="/assets/swissKnife.svg" alt="swiss army knife" />
           </Grid>
         </Grid>
         <Grid
@@ -262,7 +284,7 @@ export default function MobileApps(props) {
           </Grid>
           <Grid item>
             <img
-              src='/assets/extendAccess.svg'
+              src="/assets/extendAccess.svg"
               alt="extend access"
               style={{ maxWidth: matchesXS ? "20em" : "28em" }}
             />
@@ -275,12 +297,15 @@ export default function MobileApps(props) {
             </Typography>
           </Grid>
           <Grid item>
-            <img src='/assets/increaseEngagement.svg' alt="increase engagement" />
+            <img
+              src="/assets/increaseEngagement.svg"
+              alt="increase engagement"
+            />
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
-      <CallToAction setValue={props.setValue} />
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );

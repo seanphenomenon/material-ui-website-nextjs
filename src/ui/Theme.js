@@ -26,6 +26,7 @@ export default createMuiTheme({
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1rem",
+      color: "white",
     },
     estimate: {
       fontFamily: "Pacifico",
@@ -33,7 +34,7 @@ export default createMuiTheme({
       textTransform: "none",
       color: "white",
     },
-    h2: {
+    h1: {
       fontFamily: "Raleway",
       fontWeight: 700,
       fontSize: "2.5rem",
@@ -59,10 +60,10 @@ export default createMuiTheme({
       fontWeight: 700,
     },
     h6: {
-      fontFamily: 'Raleway',
+      fontFamily: "Raleway",
       color: arcBlue,
       fontWeight: 500,
-      lineHeight: 1 
+      lineHeight: 1,
     },
     subtitle1: {
       fontSize: "1.25rem",
@@ -84,41 +85,41 @@ export default createMuiTheme({
       fontWeight: "bold",
     },
     body1: {
-      fontSize: '1.25rem',
+      fontSize: "1.25rem",
       color: arcGrey,
-      fontWeight: 300
+      fontWeight: 300,
     },
     caption: {
-      fontSize:'1rem',
+      fontSize: "1rem",
       fontWeight: 300,
-      color: arcGrey
+      color: arcGrey,
     },
   },
-  overrides: { //this theme is for contact us imput fields.
-    MuiInputLabel:{
+  overrides: {
+    //this theme is for contact us imput fields.
+    MuiInputLabel: {
       //style is applied to root element
       root: {
         color: arcBlue,
-        fontSize:'1rem'
-      }
+        fontSize: "1rem",
+      },
     },
     MuiInput: {
       root: {
         //changes color of input text from default black to grey
         color: arcGrey,
-        fontWeight: 300
+        fontWeight: 300,
       },
       underline: {
-        '&:before':{
+        "&:before": {
           //styling before input is clicked
-          borderBottom:`2px solid ${arcBlue}`
+          borderBottom: `2px solid ${arcBlue}`,
         },
-        '&:hover:not($disabled):not($focused):not($error):before': {
+        "&:hover:not($disabled):not($focused):not($error):before": {
           //gets rid of dark color on input hover
-          borderBottom:`2px solid ${arcBlue}`
-
-        }
-      }
-    }
-  }
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
+    },
+  },
 });

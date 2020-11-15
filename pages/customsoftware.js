@@ -1,13 +1,13 @@
 import React from "react";
+import Head from "next/head";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import  Link  from "../src/Link";
+import Link from "../src/Link";
 import Hidden from "@material-ui/core/Hidden";
 import Lottie from "react-lottie";
 import IconButton from "@material-ui/core/IconButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 
 import documentsAnimation from "../src/animations/documentsAnimation/data";
 import scaleAnimation from "../src/animations/scaleAnimation/data.json";
@@ -48,7 +48,7 @@ export default function CustomSoftware(props) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const documentsOptions = {
     loop: true,
@@ -87,13 +87,31 @@ export default function CustomSoftware(props) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Custom Software Development Design | Free Estimate
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | Custom Software Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
+
+        <link rel="canonical" key="canonical" href="arc.com/customsoftware" />
+      </Head>
       <Grid
         item
         container
         direction="row"
         justify={matchesMD ? "center" : undefined}
         className={classes.rowContainer}
-        style={{marginTop: matchesXS ? '1em' : '2em'}}
+        style={{ marginTop: matchesXS ? "1em" : "2em" }}
       >
         <Hidden mdDown>
           <Grid
@@ -107,14 +125,17 @@ export default function CustomSoftware(props) {
               href="/services"
               onClick={() => props.setSelectedIndex(1)} //set to 1 for custom software as active services tab in menu
             >
-              <img src='/assets/backArrow.svg' alt="back arrow to custom software page" />
+              <img
+                src="/assets/backArrow.svg"
+                alt="back arrow to custom software page"
+              />
             </IconButton>
           </Grid>
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
             <Typography
-              variant="h2"
+              variant="h1"
               gutterBottom
               align={matchesMD ? "center" : undefined}
             >
@@ -174,7 +195,7 @@ export default function CustomSoftware(props) {
               onClick={() => props.setSelectedIndex(2)} //set to 2 for ios/andriod as active tab in menu
             >
               <img
-                src='/assets/forwardArrow.svg'
+                src="/assets/forwardArrow.svg"
                 alt="forward arrow to web development page"
               />
             </IconButton>
@@ -203,7 +224,7 @@ export default function CustomSoftware(props) {
             <Typography variant="h4">Save Energy</Typography>
           </Grid>
           <Grid item>
-            <img src='assets/bulb.svg' alt="light bulb" />
+            <img src="assets/bulb.svg" alt="light bulb" />
           </Grid>
         </Grid>
         <Grid
@@ -222,7 +243,7 @@ export default function CustomSoftware(props) {
             <Typography variant="h4">Save Time</Typography>
           </Grid>
           <Grid item>
-            <img src='/assets/stopwatch.svg' alt="stop watch" />
+            <img src="/assets/stopwatch.svg" alt="stop watch" />
           </Grid>
         </Grid>
         <Grid
@@ -237,7 +258,7 @@ export default function CustomSoftware(props) {
             <Typography variant="h4">Save Money</Typography>
           </Grid>
           <Grid item>
-            <img src='/assets/cash.svg' alt="cash" />
+            <img src="/assets/cash.svg" alt="cash" />
           </Grid>
         </Grid>
       </Grid>
@@ -247,8 +268,9 @@ export default function CustomSoftware(props) {
         container
         direction={matchesMD ? "column" : "row"} // direction ternary allows containers to stack at md breakpoint.
         alignItems={matchesMD ? "center" : undefined} // alignItems moves container center at md breakpoint.
-        justify="space-around" // justify space around creates more space around and in between both image containers.
+        justify={matchesMD ? "center" : "space-around"} // justify space around creates more space around and in between both image containers.
         className={classes.rowContainer}
+        style={{ display: matchesMD ? "grid" : undefined }}
       >
         {" "}
         <Grid
@@ -360,7 +382,7 @@ export default function CustomSoftware(props) {
         <Grid item container direction="column" alignItems="center">
           <Grid item style={{ marginBottom: "2em" }}>
             <img
-              src='/assets/root.svg'
+              src="/assets/root.svg"
               alt="tree with roots"
               height={matchesSM ? "300em" : "450em"}
               width={matchesSM ? "300em" : "450em"}
@@ -387,9 +409,12 @@ export default function CustomSoftware(props) {
         container
         direction={matchesMD ? "column" : "row"} // direction ternary allows containers to stack at md breakpoint.
         alignItems={matchesMD ? "center" : undefined} // alignItems moves container center at md breakpoint
-        justify="space-around"
-        style={{ marginBottom: "20em" }}
+        justify={matchesMD ? "center" : "space-around"}
         className={classes.rowContainer}
+        style={{
+          marginBottom: "20em",
+          display: matchesMD ? "grid" : undefined,
+        }}
       >
         {" "}
         {/* justify space around creates more space around and in between both image containers */}
@@ -467,7 +492,6 @@ export default function CustomSoftware(props) {
                 variant="h4"
                 gutterBottom
                 align={matchesSM ? "center" : "right"} //align right prop can be use within typography component instead of textAlign styling.
-
               >
                 {" "}
                 User Experience Design

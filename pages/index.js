@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Lottie from "react-lottie";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -8,14 +9,11 @@ import Button from "@material-ui/core/Button";
 import ButtonArrow from "../src/ui/ButtonArrow";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Link from '../src/Link';
+import Link from "../src/Link";
 
-import CallToAction from'../src/ui/CallToAction';
+import CallToAction from "../src/ui/CallToAction";
 
 import animationData from "../src/animations/landinganimation/data";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   // ----- Hero Block ------//
@@ -127,17 +125,13 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-
 }));
-
-
-
 
 export default function LandingPage(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm")); // this is used to style service container using ternary/conditional rendering only at small breakpoint and not all the time.
-  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   // default options animations object usage                                                                                                                                                                                                                                                                                                                                                                                                                           found through react-lottie github page.
   const defaultOptions = {
@@ -151,11 +145,30 @@ export default function LandingPage(props) {
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>
+      <Head>
+        {" "}
+        {/* Head is added for SEO purposes*/}
+        <title key="title">
+          Custom Software Mobile Apps & Websites | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Pristine software custom-designed from the ground up with cutting-edge optimizations. Use our free estimate calculator to check your project cost!."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | Arc Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/" />
+        <link rel="canonical" key="canonical" href="arc.com/" />
+      </Head>
       <Grid item>
         {/* --------------------------------- Hero Block --------------------------------- */}
         <Grid container direction="row" justify="flex-end" alignItems="center">
           <Grid item sm className={classes.heroTextContainer}>
-            <Typography align="center" variant="h2">
+            <Typography align="center" variant="h1">
               Bringing West Coast Technology
               <br />
               to the Midwest
@@ -166,22 +179,23 @@ export default function LandingPage(props) {
               className={classes.buttonContainer}
             >
               <Grid item>
-                <Button 
-                variant="contained" 
-                className={classes.estimateButton}
-                component={Link}
-                href='/estimate'
-                onClick={() => props.setValue(5)}//  value of 5 clears the screen of any active tabs when going to the estimate tab.
+                <Button
+                  variant="contained"
+                  className={classes.estimateButton}
+                  component={Link}
+                  href="/estimate"
+                  onClick={() => props.setValue(5)} //  value of 5 clears the screen of any active tabs when going to the estimate tab.
                 >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" 
-                className={classes.learnButtonHero}
-                component={Link}
-                href='/revolution'
-                onClick={() => props.setValue(2)}
+                <Button
+                  variant="outlined"
+                  className={classes.learnButtonHero}
+                  component={Link}
+                  href="/revolution"
+                  onClick={() => props.setValue(2)}
                 >
                   <span style={{ marginRight: "10px" }}>Learn More</span>
                   <ButtonArrow
@@ -223,12 +237,15 @@ export default function LandingPage(props) {
               Complete digital solutions, from investigation to{" "}
               <span className={classes.specialText}>celebration.</span>
             </Typography>
-            <Button 
-            variant="outlined" 
-            className={classes.learnButton}
-            component={Link}
-            href='/customsoftware'
-            onClick={() => {props.setValue(1); props.setSelectedIndex(1)}}
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              href="/customsoftware"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(1);
+              }}
             >
               <span style={{ marginRight: "10px" }}>Learn More</span>
               <ButtonArrow
@@ -240,7 +257,7 @@ export default function LandingPage(props) {
           </Grid>
           <Grid item>
             <img
-              src='/assets/customSoftware.svg'
+              src="/assets/customSoftware.svg"
               alt="custom software icon"
               className={classes.icon}
             />
@@ -269,12 +286,15 @@ export default function LandingPage(props) {
               Integrate your web experience or create a standalone app
               {matchesSM ? null : <br />} with either mobile platform.
             </Typography>
-            <Button 
-            variant="outlined" 
-            className={classes.learnButton}
-            component={Link}
-                href='/mobileapps'
-                onClick={() => {props.setValue(1); props.setSelectedIndex(2)}}
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              href="/mobileapps"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(2);
+              }}
             >
               <span style={{ marginRight: "10px" }}>Learn More</span>
               <ButtonArrow
@@ -286,7 +306,7 @@ export default function LandingPage(props) {
           </Grid>
           <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
-              src='/assets/mobileicon.svg'
+              src="/assets/mobileicon.svg"
               alt="mobile phone icon"
               className={classes.icon}
             />
@@ -314,12 +334,15 @@ export default function LandingPage(props) {
             <Typography variant="subtitle1" className={classes.subtitle}>
               Optimized for Seach Engines, built for speed.
             </Typography>
-            <Button 
-            variant="outlined" 
-            className={classes.learnButton}
-            component={Link}
-            href='/websites'
-            onClick={() => {props.setValue(1); props.setSelectedIndex(3)}}
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              href="/websites"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(3);
+              }}
             >
               <span style={{ marginRight: "10px" }}>Learn More</span>
               <ButtonArrow
@@ -331,7 +354,7 @@ export default function LandingPage(props) {
           </Grid>
           <Grid item>
             <img
-              src='/assets/websiteIcon.svg'
+              src="/assets/websiteIcon.svg"
               alt="website icon"
               className={classes.icon}
             />
@@ -365,12 +388,14 @@ export default function LandingPage(props) {
                       Visionary insights coupled with cutting-edge technology is
                       a recipe for revolution.
                     </Typography>
-                    <Button 
-                    variant="outlined" 
-                    className={classes.learnButton}
-                    component={Link}
-                    href='/revolution'
-                    onClick={() => {props.setValue(2)}}
+                    <Button
+                      variant="outlined"
+                      className={classes.learnButton}
+                      component={Link}
+                      href="/revolution"
+                      onClick={() => {
+                        props.setValue(2);
+                      }}
                     >
                       <span style={{ marginRight: "10px" }}>Learn More</span>
                       <ButtonArrow
@@ -395,37 +420,64 @@ export default function LandingPage(props) {
           >
             <div className={classes.infoBackground} />
 
-            <Grid item container  
-            style={{ position: "absolute", textAlign: matchesXS ? 'center':'inherit' }}  //position absolute item container allows both items to be positioned next to each other. 
-            direction={matchesXS ? 'column': 'row'}  //column direction of container switches to row at the small breakpoint to stack items. Inherit alignment prop defaults it to go back to what it was doing before. 
-            > 
-
-              <Grid item sm style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : "5em"}}> {/* nested ternary here checks for xs breakpoint to stack first. if true, set margin left to 0. if not, check sm breakpoint.*/}
-                <Grid container style={{marginBottom: matchesXS ? '10em' : 0}} direction='column' > {/* marginBottom here gets rid of horizontal scrolling white space inside component*/}
-                  <Typography variant="h2" style={{ color: "white" }}>
+            <Grid
+              item
+              container
+              style={{
+                position: "absolute",
+                textAlign: matchesXS ? "center" : "inherit",
+              }} //position absolute item container allows both items to be positioned next to each other.
+              direction={matchesXS ? "column" : "row"} //column direction of container switches to row at the small breakpoint to stack items. Inherit alignment prop defaults it to go back to what it was doing before.
+            >
+              <Grid
+                item
+                sm
+                style={{
+                  marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                }}
+              >
+                {" "}
+                {/* nested ternary here checks for xs breakpoint to stack first. if true, set margin left to 0. if not, check sm breakpoint.*/}
+                <Grid
+                  container
+                  style={{ marginBottom: matchesXS ? "10em" : 0 }}
+                  direction="column"
+                >
+                  {" "}
+                  {/* marginBottom here gets rid of horizontal scrolling white space inside component*/}
+                  <Typography variant="h1" style={{ color: "white" }}>
                     About Us
                   </Typography>
                   <Typography variant="subtitle2" gutterBottom>
                     Let's get personal
                   </Typography>
                   <Grid item>
-                  <Button
-                    variant="outlined"
-                    className={classes.learnButton}
-                    style={{ borderColor: "white", color: "white" }}
-                    component={Link}
-                href='/about'
-                onClick={() => props.setValue(3)}
-                  >
-                    <span style={{marginRight: '10px'}}>Learn More</span>
-                    <ButtonArrow  width={15} height={15} fill="white" />
-                  </Button>
+                    <Button
+                      variant="outlined"
+                      className={classes.learnButton}
+                      style={{ borderColor: "white", color: "white" }}
+                      component={Link}
+                      href="/about"
+                      onClick={() => props.setValue(3)}
+                    >
+                      <span style={{ marginRight: "10px" }}>Learn More</span>
+                      <ButtonArrow width={15} height={15} fill="white" />
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item sm style={{ marginRight: matchesXS ? 0 : matchesSM ? '2em': '5em', textAlign: matchesXS ? 'center': 'right'}}> {/* nested ternary here checks xs breakpoint to stack first. if true, set margin to zero. if false, check sm breakpoint.*/}
-                <Grid container direction="column" >
-                  <Typography variant="h2" style={{ color: "white" }}>
+              <Grid
+                item
+                sm
+                style={{
+                  marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                  textAlign: matchesXS ? "center" : "right",
+                }}
+              >
+                {" "}
+                {/* nested ternary here checks xs breakpoint to stack first. if true, set margin to zero. if false, check sm breakpoint.*/}
+                <Grid container direction="column">
+                  <Typography variant="h1" style={{ color: "white" }}>
                     Contact Us
                   </Typography>
                   <Typography variant="subtitle2" gutterBottom>
@@ -435,17 +487,17 @@ export default function LandingPage(props) {
                     </span>
                   </Typography>
                   <Grid item>
-                  <Button
-                    variant="outlined"
-                    className={classes.learnButton}
-                    style={{ borderColor: "white", color: "white" }}
-                    component={Link}
-                href='/contact'
-                onClick={() => props.setValue(4)}
-                  >
-                    <span style={{marginRight: '10px'}}>Learn More</span>
-                    <ButtonArrow width={15} height={15} fill="white" />
-                  </Button>
+                    <Button
+                      variant="outlined"
+                      className={classes.learnButton}
+                      style={{ borderColor: "white", color: "white" }}
+                      component={Link}
+                      href="/contact"
+                      onClick={() => props.setValue(4)}
+                    >
+                      <span style={{ marginRight: "10px" }}>Learn More</span>
+                      <ButtonArrow width={15} height={15} fill="white" />
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
@@ -453,7 +505,8 @@ export default function LandingPage(props) {
           </Grid>
         </Grid>
         {/* ------ Call To Action Block ---------------------------- */}
-        <CallToAction setValue={props.setValue}/> {/* passing setvalue function  here to handle active tab*/}
+        <CallToAction setValue={props.setValue} />{" "}
+        {/* passing setvalue function  here to handle active tab*/}
       </Grid>
     </Grid>
   );

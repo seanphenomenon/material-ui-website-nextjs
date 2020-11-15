@@ -1,12 +1,11 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/styles";
+import Head from "next/head";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Avatar from "@material-ui/core/Avatar";
 import Hidden from "@material-ui/core/Hidden";
-
-
 
 import CallToAction from "../src/ui/CallToAction";
 
@@ -48,13 +47,31 @@ export default function AboutUs(props) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">About Us - History & Team | Arc Development</title>
+        <meta
+          name="description"
+          key="description"
+          content="We provide the fastest, most modern, affordable, and aesthetic software design and development services in the Midwest. 
+        Get a free online estimate now!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | About Us"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/about" />
+
+        {/* Cononical link Tag Below below for SEO: tells search engine which url is the correct version of the page */}
+        <link rel="canonical" key="canonical" href="arc.com/about" />
+      </Head>
       <Grid
         item
         className={classes.rowContainer}
         style={{ marginTop: matchesMD ? "1em" : "2em" }}
       >
         <Typography
-          variant="h2"
+          variant="h1"
           gutterBottom
           align={matchesMD ? "center" : undefined}
         >
@@ -88,7 +105,7 @@ export default function AboutUs(props) {
         direction={matchesMD ? "column" : "row"}
         alignItems={matchesMD ? "center" : undefined}
         className={classes.rowContainer}
-        justify="space-around"
+        justify="space-between"
         style={{ marginTop: "10em", marginBottom: "10em" }}
       >
         <Grid item>
@@ -164,7 +181,7 @@ export default function AboutUs(props) {
           {/*nested grit item container below in order to add space-around justification to wrapping row container*/}
           <Grid item container justify="center" lg>
             <img
-              src='/assets/history.svg'
+              src="/assets/history.svg"
               alt="quill pen sitting on top of book"
               style={{ maxHeight: matchesMD ? 200 : "22em" }}
             />
@@ -193,7 +210,11 @@ export default function AboutUs(props) {
           </Typography>
         </Grid>
         <Grid item>
-          <Avatar src='/assets/founder.jpg' alt="founder" className={classes.avatar} />
+          <Avatar
+            src="/assets/founder.jpg"
+            alt="founder"
+            className={classes.avatar}
+          />
         </Grid>
         <Grid
           item
@@ -225,7 +246,7 @@ export default function AboutUs(props) {
           >
             <Grid item>
               <img
-                src='/assets/yearbook.svg'
+                src="/assets/yearbook.svg"
                 alt="yearbook page about founder"
                 style={{ maxWidth: matchesMD ? 300 : undefined }}
               />
@@ -259,7 +280,7 @@ export default function AboutUs(props) {
           >
             <Grid item>
               <img
-                src='/assets/puppy.svg'
+                src="/assets/puppy.svg"
                 alt="gray spotted puppy"
                 style={{ maxWidth: matchesMD ? 300 : undefined }}
               />

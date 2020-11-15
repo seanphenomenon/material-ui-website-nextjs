@@ -1,9 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import  Link  from "../Link";
+import Link from "../Link";
 import Hidden from "@material-ui/core/Hidden";
-
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -63,13 +62,14 @@ export default function Footer(props) {
       <Hidden mdDown>
         {" "}
         {/* grid will be hidden from medium breakpoint and down */}
-        <Grid
-          container
-          className={classes.mainContainer}
-          justify="center"
-        >
+        <Grid container className={classes.mainContainer} justify="center">
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -82,7 +82,12 @@ export default function Footer(props) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -134,7 +139,12 @@ export default function Footer(props) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -174,7 +184,12 @@ export default function Footer(props) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -214,7 +229,12 @@ export default function Footer(props) {
             </Grid>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid
+              container
+              direction="column"
+              spacing={2}
+              style={{ margin: 0 }}
+            >
               <Grid
                 item
                 className={classes.link}
@@ -230,7 +250,7 @@ export default function Footer(props) {
       </Hidden>
 
       <img
-        src='/assets/footerAdornment.svg'
+        src="/assets/footerAdornment.svg"
         alt="black decorative slash"
         className={classes.adornment}
       />
@@ -248,7 +268,11 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src='/assets/facebook.svg' alt="facebook logo" className={classes.icon}/>
+          <img
+            src="/assets/facebook.svg"
+            alt="facebook logo"
+            className={classes.icon}
+          />
         </Grid>
         <Grid
           item
@@ -257,7 +281,11 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src='/assets/twitter.svg' alt="twitter logo" className={classes.icon} />
+          <img
+            src="/assets/twitter.svg"
+            alt="twitter logo"
+            className={classes.icon}
+          />
         </Grid>
         <Grid
           item
@@ -266,7 +294,11 @@ export default function Footer(props) {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <img src='/assets/instagram.svg' alt="instagram logo" className={classes.icon} />
+          <img
+            src="/assets/instagram.svg"
+            alt="instagram logo"
+            className={classes.icon}
+          />
         </Grid>
       </Grid>
     </footer>

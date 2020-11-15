@@ -1,15 +1,14 @@
 import React from "react";
+import Head from "next/head";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "../src/ui/ButtonArrow";
-import  Link  from "..src/Link";
+import Link from "../src/Link";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   serviceContainer: {
     marginTop: "10em",
     [theme.breakpoints.down("sm")]: {
@@ -30,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "2em",
     },
   },
- 
+
   subtitle: {
     marginBottom: "1em",
   },
@@ -49,15 +48,33 @@ export default function ServicesPage(props) {
 
   return (
     <Grid container direction="column">
+      <Head>
+        <title key="title">
+          Top Custom Software Development Services | Arc Development
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge software, mobile app, and website development services with sleek custom designs - get a free online estimate instantly!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | Services"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/services" />
+
+        <link rel="canonical" key="canonical" href="arc.com/services" />
+      </Head>
       <Grid
         item
         style={{
           marginLeft: matchesSM ? 0 : "5em",
-          marginTop: matchesSM ? "1em" : "2em"
+          marginTop: matchesSM ? "1em" : "2em",
         }}
       >
         <Typography
-          variant="h2"
+          variant="h1"
           gutterBottom
           align={matchesSM ? "center" : undefined}
         >
@@ -65,8 +82,7 @@ export default function ServicesPage(props) {
         </Typography>
       </Grid>
       <Grid item>
-
-          {/* ---- iOS/Android Block ------ */}
+        {/* ---- iOS/Android Block ------ */}
         <Grid
           container
           direction="row"
@@ -109,7 +125,7 @@ export default function ServicesPage(props) {
           </Grid>
           <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
             <img
-              src='/assets/mobileIcon.svg'
+              src="/assets/mobileIcon.svg"
               alt="mobile phone icon"
               className={classes.icon}
               width="250em" //fixed width here for icon aligns it properly with website icon
@@ -118,10 +134,10 @@ export default function ServicesPage(props) {
         </Grid>
       </Grid>
       <Grid item>
-          {/*----- Custom Software Block ------ */}
+        {/*----- Custom Software Block ------ */}
         <Grid
           container
-          direction='row'
+          direction="row"
           className={classes.serviceContainer}
           justify={matchesSM ? "center" : undefined}
         >
@@ -129,12 +145,10 @@ export default function ServicesPage(props) {
             item
             style={{
               marginLeft: matchesSM ? 0 : "5em",
-              textAlign: matchesSM ? "center" : undefined
+              textAlign: matchesSM ? "center" : undefined,
             }}
           >
-            <Typography variant="h4">
-              Custom Software Development
-            </Typography>
+            <Typography variant="h4">Custom Software Development</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
               Save Energy. Save Time. Save Money.
             </Typography>
@@ -162,66 +176,64 @@ export default function ServicesPage(props) {
           </Grid>
           <Grid item>
             <img
-              src='/assets/customSoftware.svg'
+              src="/assets/customSoftware.svg"
               alt="custom software icon"
               className={classes.icon}
             />
           </Grid>
         </Grid>
-     </Grid>
-        <Grid item>
-            {/* ----- Websites Block ------ */}
+      </Grid>
+      <Grid item>
+        {/* ----- Websites Block ------ */}
+        <Grid
+          container
+          direction="row"
+          className={classes.serviceContainer}
+          justify={matchesSM ? "center" : "flex-end"}
+          style={{ marginBottom: "10em" }}
+        >
           <Grid
-            container
-            direction="row"
-            className={classes.serviceContainer}
-            justify={matchesSM ? "center" : "flex-end"}
-            style={{ marginBottom: "10em" }}
+            item
+            style={{
+              textAlign: matchesSM ? "center" : undefined,
+              width: matchesSM ? undefined : "35em",
+            }}
           >
-            <Grid
-              item
-              style={{
-                textAlign: matchesSM ? "center" : undefined,
-                width: matchesSM ? undefined : "35em",
+            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Reach More. Discover More. Sell More.
+            </Typography>
+            <Typography variant="subtitle1" className={classes.subtitle}>
+              Optimized for Seach Engines, built for speed.
+            </Typography>
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              href="/websites"
+              onClick={() => {
+                props.setValue(1);
+                props.setSelectedIndex(3);
               }}
             >
-              <Typography variant="h4" >
-                Website Development
-              </Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Reach More. Discover More. Sell More.
-              </Typography>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                Optimized for Seach Engines, built for speed.
-              </Typography>
-              <Button
-                variant="outlined"
-                className={classes.learnButton}
-                component={Link}
-                href="/websites"
-                onClick={() => {
-                  props.setValue(1);
-                  props.setSelectedIndex(3);
-                }}
-              >
-                <span style={{ marginRight: "10px" }}>Learn More</span>
-                <ButtonArrow
-                  width={10}
-                  height={10}
-                  fill={theme.palette.common.arcBlue}
-                />
-              </Button>
-            </Grid>
-            <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
-              <img
-                src='/assets/websiteIcon.svg'
-                alt="website icon"
-                className={classes.icon}
-                width="250em" //fixed width here for icon aligns it properly with ios mobile icon
+              <span style={{ marginRight: "10px" }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.arcBlue}
               />
-            </Grid>
+            </Button>
+          </Grid>
+          <Grid item style={{ marginRight: matchesSM ? 0 : "5em" }}>
+            <img
+              src="/assets/websiteIcon.svg"
+              alt="website icon"
+              className={classes.icon}
+              width="250em" //fixed width here for icon aligns it properly with ios mobile icon
+            />
           </Grid>
         </Grid>
       </Grid>
+    </Grid>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import axios from "axios";
-import Link from '../src/Link'
+import Link from "../src/Link";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -13,7 +14,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "@material-ui/core/Snackbar";
 
 import ButtonArrow from "../src/ui/ButtonArrow";
-
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -177,13 +177,31 @@ export default function ContactUs(props) {
     // in order to cut this out of code, and place in a variable, you need to use react fragment. This is created since both button styles are the same, and will be used to include circular progress animation in dialog/conditional rendering below.
     <React.Fragment>
       Send message
-      <img src='assets/airplane.svg' alt="paper airplane" style={{ marginLeft: "1em" }} />
+      <img
+        src="assets/airplane.svg"
+        alt="paper airplane"
+        style={{ marginLeft: "1em" }}
+      />
     </React.Fragment>
   );
 
   return (
     <Grid container direction="row">
-      {" "}
+      <Head>
+        <title key="title">Contact Us | Arc Development</title>
+        <meta
+          name="description"
+          description="Let us guide you through the custom software design and development process. Send us a message with any of your ideas or questions to get started!"
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to The MidWest | Contact Us"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/contact" />
+
+        <link rel="canonical" key="canonical" href="arc.com/contact" />
+      </Head>
       {/* we need to set page up as a row because we will have the components next to one another */}
       <Grid
         item
@@ -204,7 +222,7 @@ export default function ContactUs(props) {
           <Grid container direction="column">
             <Grid item>
               <Typography
-                variant="h2"
+                variant="h1"
                 align={matchesMD ? "center" : undefined}
                 style={{ lineHeight: 1 }}
               >
@@ -221,7 +239,7 @@ export default function ContactUs(props) {
             <Grid item container direction="row" style={{ marginTop: "2em" }}>
               <Grid item>
                 <img
-                  src='/assets/phoneIcon.svg'
+                  src="/assets/phoneIcon.svg"
                   alt="phone"
                   style={{ marginRight: "0.5em", verticalAlign: "bottom" }} //verticalAlign tells which point on the image should be anchored to page. this brings it down to the same line as the text.
                 />
@@ -252,7 +270,7 @@ export default function ContactUs(props) {
             >
               <Grid item>
                 <img
-                  src='/assets/emailIcon.svg'
+                  src="/assets/emailIcon.svg"
                   alt="envelope"
                   style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
                 />
@@ -483,7 +501,7 @@ export default function ContactUs(props) {
         >
           <Grid container direction="column">
             <Grid item>
-              <Typography variant="h2" align={matchesMD ? "center" : undefined}>
+              <Typography variant="h1" align={matchesMD ? "center" : undefined}>
                 Simple Software.
                 <br /> Revolutionary Results.
               </Typography>

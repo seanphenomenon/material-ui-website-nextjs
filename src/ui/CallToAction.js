@@ -4,9 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ButtonArrow from "./ButtonArrow";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Link from '../Link';
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Link from "../Link";
 
 const useStyles = makeStyles((theme) => ({
   learnButton: {
@@ -23,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    backgroundAttachment:'fixed', //adds a parallax effect on scrool
+    backgroundAttachment: "fixed", //adds a parallax effect on scrool
 
     height: "60em",
     width: "100%",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url("/assets/mobileBackground.jpg")`,
-      backgroundAttachment: 'inherit' //removes parallax effect on mobile
+      backgroundAttachment: "inherit", //removes parallax effect on mobile
     },
   },
   estimateButton: {
@@ -39,18 +38,15 @@ const useStyles = makeStyles((theme) => ({
     height: "80px",
     width: "205px",
     marginRight: "2em",
-    marginLeft: '2em',
-    fontSize: '1.5rem',
+    marginLeft: "2em",
+    fontSize: "1.5rem",
     "&:hover": {
       backgroundColor: theme.palette.secondary.light, // this sets the secondary color, to a lighter shade.
     },
-    [theme.breakpoints.down('sm')]: {
-        marginLeft: 0,
-        marginRight: 0
-    }
-   
-    
-
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0,
+      marginRight: 0,
+    },
   },
 }));
 
@@ -58,28 +54,42 @@ export default function CallToAction(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  
+
   return (
-    <Grid container 
-    alignItems='center'
-    className={classes.callActionBackground} //setting background here as a prop, and the height of container in styles, instead of using another div, allows us to avoid messing with the absolute positioning, and allows us to use the justify space-between prop to center grid items properly. 
-    justify= {matchesSM ? 'center' : 'space-between'}
-    direction={matchesSM ? 'column': 'row'}
+    <Grid
+      container
+      alignItems="center"
+      className={classes.callActionBackground} //setting background here as a prop, and the height of container in styles, instead of using another div, allows us to avoid messing with the absolute positioning, and allows us to use the justify space-between prop to center grid items properly.
+      justify={matchesSM ? "center" : "space-between"}
+      direction={matchesSM ? "column" : "row"}
     >
-     
-      <Grid item style={{ marginLeft: matchesSM ? 0: '5em', textAlign: matchesSM ? 'center' : 'inherit'}}>
+      <Grid
+        item
+        style={{
+          marginLeft: matchesSM ? 0 : "5em",
+          textAlign: matchesSM ? "center" : "inherit",
+        }}
+      >
         <Grid container direction="column">
-          <Grid item >
-            <Typography variant="h2">
+          <Grid item>
+            <Typography variant="h1">
               Simple Software.
               <br /> Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle1" style={{color: 'white', fontSize:'1.5rem'}}>
+            <Typography
+              variant="subtitle1"
+              style={{ color: "white", fontSize: "1.5rem" }}
+            >
               Take advantage of the 21st century.
             </Typography>
-            <Grid item container justify={matchesSM ? 'center' : undefined} >
-              <Button variant="outlined" className={classes.learnButton} component={Link}
-                href='/revolution' onClick={() => props.setValue(2) }>
+            <Grid item container justify={matchesSM ? "center" : undefined}>
+              <Button
+                variant="outlined"
+                className={classes.learnButton}
+                component={Link}
+                href="/revolution"
+                onClick={() => props.setValue(2)}
+              >
                 <span style={{ marginRight: "5px" }}>Learn More</span>
                 <ButtonArrow
                   width={15}
@@ -91,15 +101,16 @@ export default function CallToAction(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item >
-      <Button 
-      variant="contained" 
-      className={classes.estimateButton} component={Link}
-      href='/estimate'
-      onClick={() => props.setValue(5)}
-      >
-        Free Estimate
-      </Button>
+      <Grid item>
+        <Button
+          variant="contained"
+          className={classes.estimateButton}
+          component={Link}
+          href="/estimate"
+          onClick={() => props.setValue(5)}
+        >
+          Free Estimate
+        </Button>
       </Grid>
     </Grid>
   );

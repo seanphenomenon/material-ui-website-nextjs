@@ -8,11 +8,21 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.png" />
           {/* PWA primary color */}
           <meta name="theme-color" content={Theme.palette.primary.main} />
-          <meta charset="utf-8" />
+          
+          {/* Open graph meta tags below for share links */}
+          <meta property='og:type' content= 'website'/>
+          <meta property='og:image' content = 'https://i.imgur.com/C8evBTM.png'/> {/* this is for the hosted image in the website share link */ }
+          <meta property='og:image:type' content='image/png'/>
+          <meta property='og:image:width' content='1200'/> {/* this is for the hosted image width in the website share link most compatible in social media sites */ }
+          <meta property='og:image:height' content='630'/> {/* this is for the hosted image height in the website share link most compatible in social media sites */ }
+          <meta property='og:image:alt' content='company logo'/> {/* this is the img alt im case image doesn't show in the website share link */ }
+
+
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap" />
-          <link rel="icon" href="/favicon.png" />
 
         </Head>
         <body style={{margin: 0}}>

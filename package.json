@@ -3,11 +3,13 @@
   "version": "4.0.0",
   "private": true,
   "dependencies": {
+    "@babel/polyfill": "^7.11.5",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.10.0",
     "axios": "^0.20.0",
     "clsx": "latest",
+    "fs-extra": "^9.0.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "next": "latest",
@@ -16,12 +18,21 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-ga": "^3.2.1",
+    "react-lazy-load-image-component": "^1.5.0",
+    "react-lazyload": "^3.1.0",
     "react-lottie": "^1.2.3"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
+    "postbuild": "node scripts/sitemap.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5"
   }
 }

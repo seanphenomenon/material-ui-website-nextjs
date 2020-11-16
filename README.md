@@ -1,3 +1,5 @@
+Deployed on Netlify: https://material-ui-course-nextjs.netlify.app
+
 # Next.js example
 
 ## How to use

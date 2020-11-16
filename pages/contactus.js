@@ -178,7 +178,7 @@ export default function ContactUs(props) {
     <React.Fragment>
       Send message
       <img
-        src="assets/airplane.svg"
+        src="assets/send.svg"
         alt="paper airplane"
         style={{ marginLeft: "1em" }}
       />
@@ -239,7 +239,7 @@ export default function ContactUs(props) {
             <Grid item container direction="row" style={{ marginTop: "2em" }}>
               <Grid item>
                 <img
-                  src="/assets/phoneIcon.svg"
+                  src="/assets/phone.svg"
                   alt="phone"
                   style={{ marginRight: "0.5em", verticalAlign: "bottom" }} //verticalAlign tells which point on the image should be anchored to page. this brings it down to the same line as the text.
                 />
@@ -270,7 +270,7 @@ export default function ContactUs(props) {
             >
               <Grid item>
                 <img
-                  src="/assets/emailIcon.svg"
+                  src="/assets/email.svg"
                   alt="envelope"
                   style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
                 />

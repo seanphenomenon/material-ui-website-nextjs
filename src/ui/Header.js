@@ -19,23 +19,34 @@ import MenuIcon from "@material-ui/icons/Menu";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Hidden from "@material-ui/core/Hidden";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuList from "@material-ui/core/MenuList";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Grid from "@material-ui/core/Grid";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 function ElevationScroll(props) {
   const { children } = props;
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0, // threshold controls how far user has to start scrolling before it triggers navbar elevation
+    threshold: 0,
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0, //once triggered, it will return the elevation of 4. Otherwise, it will remain flat(0).
+    elevation: trigger ? 4 : 0,
   });
 }
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
-    ...theme.mixins.toolbar, //using spread operator here copies the styles over from default theme mixin to be able to apply them to components/elements. Helps to push text from under toolbar.
+    ...theme.mixins.toolbar,
     marginBottom: "3em",
     [theme.breakpoints.down("md")]: {
       marginBottom: "2em",
@@ -57,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   logoContainer: {
     padding: 0,
     "&:hover": {
-      backgroundColor: "transparent", // this hover property gets rid of logo button opacity on hover
+      backgroundColor: "transparent",
     },
   },
   tabContainer: {
@@ -91,15 +102,15 @@ const useStyles = makeStyles((theme) => ({
       opacity: 1,
     },
   },
-  drawerIconContainer: {
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-    marginLeft: "auto",
-  },
   drawerIcon: {
     height: "50px",
     width: "50px",
+  },
+  drawerIconContainer: {
+    marginLeft: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   drawer: {
     backgroundColor: theme.palette.common.arcBlue,
@@ -107,19 +118,41 @@ const useStyles = makeStyles((theme) => ({
   drawerItem: {
     ...theme.typography.tab,
     color: "white",
-    opacity: "0.7",
+    opacity: 0.7,
   },
   drawerItemEstimate: {
-    ...theme.typography.estimate,
     backgroundColor: theme.palette.common.arcOrange,
   },
   drawerItemSelected: {
     "& .MuiListItemText-root": {
-      opacity: "1",
+      opacity: 1,
     },
   },
-  appBar: {
-    zIndex: theme.zIndex.modal + 1, // this is created to make app bar appear on top of drawer
+  appbar: {
+    zIndex: theme.zIndex.modal + 1,
+  },
+  expansion: {
+    backgroundColor: theme.palette.common.arcBlue,
+    borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+    "&.Mui-expanded": {
+      margin: 0,
+      borderBottom: 0,
+    },
+    "&::before": {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+    },
+  },
+  expansionDetails: {
+    padding: 0,
+    backgroundColor: theme.palette.primary.light,
+  },
+  expansionSummary: {
+    padding: "0 24px 0 16px",
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.08)",
+    },
+    backgroundColor: (props) =>
+      props.value === 1 ? "rgba(0, 0, 0, 0.14)" : "inherit",
   },
 }));
 
@@ -127,36 +160,40 @@ export default function Header(props) {
   const classes = useStyles(props);
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const matches = useMediaQuery(theme.breakpoints.down("md")); //this will select anything that is medium and below to return true.
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  // Hooks:
-  // const [value, setValue] = useState(0); // this controls which nav tab we selected and its route.
-  const [anchorEl, setAnchorEl] = useState(null); // this stores the drop down services tab menu item we clicked on and what we want to be rendered
-  const [openMenu, setOpenMenu] = useState(false);
-  // const [selectedIndex, setSelectedIndex] = useState(0);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const [previousURL, setPreviousURL] = useState("");
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (e, newValue) => {
     props.setValue(newValue);
   };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
     setOpenMenu(true);
   };
 
-  const handleMenuItemClick = (event, index) => {
+  const handleMenuItemClick = (e, i) => {
     setAnchorEl(null);
     setOpenMenu(false);
-    props.setSelectedIndex(index);
+    props.setSelectedIndex(i);
   };
 
-  const handleClose = (event) => {
+  const handleClose = (e) => {
     setAnchorEl(null);
     setOpenMenu(false);
   };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpenMenu(false);
+    }
+  }
 
   const menuOptions = [
     {
@@ -190,8 +227,8 @@ export default function Header(props) {
       mouseOver: (event) => handleClick(event),
     },
     { name: "The Revolution", link: "/revolution", activeIndex: 2 },
-    { name: "About Us", link: "/about", activeIndex: 3 },
-    { name: "Contact Us", link: "/contact", activeIndex: 4 },
+    { name: "About Us", link: "/aboutus", activeIndex: 3 },
+    { name: "Contact Us", link: "/contactus", activeIndex: 4 },
   ];
 
   function checkPath() {
@@ -212,6 +249,7 @@ export default function Header(props) {
           if (props.value !== false) {
             props.setValue(false);
           }
+
           break;
         default:
           break;
@@ -274,40 +312,71 @@ export default function Header(props) {
       >
         Free Estimate
       </Button>
-      <Menu
+      <Popper
+        open={openMenu}
+        anchorEl={anchorEl}
+        placement="bottom-start"
+        role={undefined}
+        transition
+        disablePortal
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin: "top left",
+            }}
+          >
+            <Paper classes={{ root: classes.menu }} elevation={0}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  onMouseOver={() => setOpenMenu(true)}
+                  onMouseLeave={handleClose}
+                  disablePadding
+                  autoFocusItem={false}
+                  id="simple-menu"
+                  onKeyDown={handleListKeyDown}
+                >
+                  {menuOptions.map((option, i) => (
+                    <MenuItem
+                      key={`${option}${i}`}
+                      component={Link}
+                      href={option.link}
+                      classes={{ root: classes.menuItem }}
+                      onClick={(event) => {
+                        handleMenuItemClick(event, i);
+                        props.setValue(1);
+                        handleClose();
+                      }}
+                      selected={
+                        i === props.selectedIndex &&
+                        props.value === 1 &&
+                        window.location.pathname !== "/services"
+                      }
+                    >
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+      {/* <Menu
         id="simple-menu"
+        disableAutoFocusItem
         anchorEl={anchorEl}
         open={openMenu}
         onClose={handleClose}
         classes={{ paper: classes.menu }}
         MenuListProps={{
-          onMouseLeave: handleClose,
+          onMouseLeave: handleClose
         }}
         elevation={0}
         style={{ zIndex: 1302 }}
         keepMounted
-      >
-        {menuOptions.map((option, i) => (
-          <MenuItem
-            key={`${option}${i}`}
-            component={Link}
-            href={option.link}
-            classes={{ root: classes.menuItem }}
-            onClick={(event) => {
-              handleMenuItemClick(event, i);
-              props.setValue(1);
-              handleClose();
-            }}
-            selected={
-              i === props.selectedIndex &&
-              props.value === 1 &&
-              window.location.pathname !== "/services"
-            }
-          >
-            {option.name}
-          </MenuItem>
-        ))}
-      </Menu>
+      ></Menu> */}
     </React.Fragment>
   );
 
@@ -323,29 +392,101 @@ export default function Header(props) {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {routes.map((route) => (
-            <ListItem
-              divider
-              key={`${route}${route.activeIndex}`}
-              button
-              component={Link}
-              href={route.link}
-              selected={props.value === route.activeIndex}
-              classes={{ selected: classes.drawerItemSelected }}
-              onClick={() => {
-                setOpenDrawer(false);
-                props.setValue(route.activeIndex);
-              }}
-            >
-              <ListItemText className={classes.drawerItem} disableTypography>
-                {route.name}
-              </ListItemText>
-            </ListItem>
-          ))}
+          {routes.map((route) =>
+            route.name === "Services" ? (
+              <ExpansionPanel
+                elevation={0}
+                key={route.name}
+                classes={{ root: classes.expansion }}
+              >
+                <ExpansionPanelSummary
+                  classes={{ root: classes.expansionSummary }}
+                  expandIcon={<ExpandMoreIcon color="secondary" />}
+                >
+                  <ListItemText
+                    className={classes.drawerItem}
+                    disableTypography
+                    style={{ opacity: props.value === 1 ? 1 : null }}
+                    onClick={() => {
+                      setOpenDrawer(false);
+                      props.setValue(route.activeIndex);
+                    }}
+                  >
+                    <Link href={route.link} color="inherit">
+                      {route.name}
+                    </Link>
+                  </ListItemText>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails
+                  classes={{ root: classes.expansionDetails }}
+                >
+                  <Grid container direction="column">
+                    {menuOptions.map((route) => (
+                      <Grid item>
+                        <ListItem
+                          divider
+                          key={`${route}${route.seleselectedIndex}`}
+                          button
+                          component={Link}
+                          href={route.link}
+                          selected={
+                            props.selectedIndex === route.selectedIndex &&
+                            props.value === 1 &&
+                            window.location.pathname !== "/services"
+                          }
+                          classes={{ selected: classes.drawerItemSelected }}
+                          onClick={() => {
+                            setOpenDrawer(false);
+                            props.setSelectedIndex(route.selectedIndex);
+                          }}
+                        >
+                          <ListItemText
+                            className={classes.drawerItem}
+                            disableTypography
+                          >
+                            {route.name
+                              .split(" ")
+                              .filter((word) => word !== "Development")
+                              .join(" ")}
+                            <br />
+                            <span style={{ fontSize: "0.75rem" }}>
+                              Development
+                            </span>
+                          </ListItemText>
+                        </ListItem>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            ) : (
+              <ListItem
+                divider
+                key={`${route}${route.activeIndex}`}
+                button
+                component={Link}
+                href={route.link}
+                selected={props.value === route.activeIndex}
+                classes={{ selected: classes.drawerItemSelected }}
+                onClick={() => {
+                  setOpenDrawer(false);
+                  props.setValue(route.activeIndex);
+                }}
+              >
+                <ListItemText className={classes.drawerItem} disableTypography>
+                  {route.name}
+                </ListItemText>
+              </ListItem>
+            )
+          )}
           <ListItem
             onClick={() => {
               setOpenDrawer(false);
               props.setValue(false);
+              ReactGA.event({
+                category: "Estimate",
+                action: "Mobile Header Pressed",
+              });
             }}
             divider
             button
@@ -387,13 +528,12 @@ export default function Header(props) {
               style={{ textDecoration: "none" }}
             >
               <svg
-                id="Layer_1"
                 className={classes.logo}
+                id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 480 139"
               >
-                <style>{`.st0{fill:none}.st1{fill:#fff}.st2{font-family:Raleway; font-weight
-                : 300}.st6{fill:none;stroke:#000;stroke-width:3;stroke-miterlimit:10}`}</style>
+                <style>{`.st0{fill:none}.st1{fill:#fff}.st2{font-family:Raleway; font-weight:300}.st6{fill:none;stroke:#000;stroke-width:3;stroke-miterlimit:10}`}</style>
                 <path d="M448.07-1l-9.62 17.24-8.36 14.96L369.93 139H-1V-1z" />
                 <path className="st0" d="M-1 139h479.92v.01H-1z" />
                 <text
@@ -436,7 +576,8 @@ export default function Header(props) {
                 />
               </svg>
             </Button>
-            {matches ? drawer : tabs}
+            <Hidden mdDown>{tabs}</Hidden>
+            <Hidden lgUp>{drawer}</Hidden>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

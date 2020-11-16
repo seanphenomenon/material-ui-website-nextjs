@@ -343,14 +343,14 @@ export default function ContactUs(props) {
               <Button
                 variant="contained"
                 className={classes.sendButton}
-                //   disabled={
-                //       name.length === 0 ||
-                //        email.length === 0 ||
-                //        phone.length === 0||
-                //        message.length === 0 ||
-                //         phoneHelper.length !== 0 ||
-                //         emailHelper.length !== 0
-                //     } // to check for validity of contact us form, the button is set to disabled until ALL fields include valid text.
+                disabled={
+                  name.length === 0 ||
+                  email.length === 0 ||
+                  phone.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                } // to check for validity of contact us form, the button is set to disabled until ALL fields include valid text.
                 onClick={() => setOpen(true)} // once send message button has been clicked, it will trigger confirmation dialog modal to open on screen.
               >
                 {buttonContents}{" "}
